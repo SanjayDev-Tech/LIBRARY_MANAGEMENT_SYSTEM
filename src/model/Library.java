@@ -63,19 +63,20 @@ public class Library {
         }
     }
 
-    public void assignBook(String isbn) {
+    public int  assignBook(String isbn) {
         for (Book book : books) {
             if (book.getIsbn().equalsIgnoreCase(isbn)) {
                 if (book.isAvailable()) {
                     book.setAvailable(false);
-                    System.out.println("Success: Book '" + book.getTitle() + "' has been assigned!");
+                    return 1;
+                   
                 } else {
-                    System.out.println("Sorry, book is already assigned!");
+                    return 2;
                 }
-                return;
+                
             }
         }
-        System.out.println("Book with ISBN " + isbn + " not found.");
+       return 0;
     }
 
     public void unassignBook(String isbn) {

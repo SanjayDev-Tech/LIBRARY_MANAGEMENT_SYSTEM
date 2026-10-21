@@ -81,7 +81,16 @@ public class LibraryController {
 
     private void handleAssignBook() {
         String isbn = view.getUserInput("Enter ISBN of book to assign: ");
-        library.assignBook(isbn);
+        int status = library.assignBook(isbn);
+
+         if (status == 1) {
+        view.showMessage("Book assigned successfully!");
+    } else if (status == 2) {
+        view.showMessage(" Book is already assigned to someone else!");
+    } else {
+        view.showMessage("Book not found with this ISBN!");
+    }
+
     }
 
     private void handleReturnBook() {
