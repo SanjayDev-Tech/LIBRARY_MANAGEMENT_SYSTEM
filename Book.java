@@ -5,7 +5,7 @@ public class Book {
     private String tag;
     private boolean isAvailable;
 
-public Book(String isbn, String title, String author, String tag) {
+    public Book(String isbn, String title, String author, String tag) {
         this.isbn = isbn;
         this.title = title;
         this.author = author;
@@ -53,15 +53,18 @@ public Book(String isbn, String title, String author, String tag) {
         isAvailable = available;
     }
 
+    
+
     @Override
     public String toString() {
         String status;
-        if(isAvailable) {
+        if (isAvailable) {
             status = "Available";
-        }else {
+        } else {
             status = "Assigned";
         }
 
-    return "ISBN: " + isbn + " | Title: " + title + " | Author: " + author + " | Tag: " + tag + " | Status: " + status;
+        return "ISBN: " + isbn + " | Title: " + title + " | Author: " + author + " | Tag: " + tag + " | Status: "
+                + status;
     }
 }

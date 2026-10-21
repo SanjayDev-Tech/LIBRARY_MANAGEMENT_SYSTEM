@@ -2,20 +2,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Library {
-private List<Book> books;
+    private List<Book> books;
 
-public Library() {
+    public Library() {
         books = new ArrayList<>();
     }
 
-    public void addBook(Book book) {
-        books.add(book);
-        System.out.println("Added: " + book.getTitle());
+    public boolean addBook(Book book) {
+        return books.add(book);
+       
     }
 
     public void deleteBook(String isbn) {
         for (Book book : books) {
-            if(book.getIsbn().equalsIgnoreCase(isbn)) {
+            if (book.getIsbn().equalsIgnoreCase(isbn)) {
                 books.remove(book);
                 System.out.println("Deleted: " + book.getTitle());
                 return;
@@ -37,8 +37,8 @@ public Library() {
 
     public void searchByTitle(String title) {
         System.out.println("\nSearching for title: " + title);
-    for (Book book : books) {
-            if(book.getTitle().toLowerCase().contains(title.toLowerCase())) {
+        for (Book book : books) {
+            if (book.getTitle().toLowerCase().contains(title.toLowerCase())) {
                 System.out.println(book);
             }
         }
@@ -61,4 +61,38 @@ public Library() {
             }
         }
     }
+
+    public void assignBook(String isbn) {
+        for (Book book : books) {
+            if (book.getIsbn().equalsIgnoreCase(isbn)) {
+                if (book.isAvailable()) {
+                    book.setAvailable(false);
+                    System.out.println("Success: Book ' " + book.getTitle() + "' has been assigned!");
+
+                } else {
+                    System.out.println("Sorry, book is already assigned!");
+                }
+
+                return;
+            }
+        }
+        System.out.println("Book with ISBN :" + isbn + "not found.");
+
+    }
+
+    public void unassignBook(String isbn) {
+        for (Book book : books) {
+            if (book.getIsbn().equalsIgnoreCase(isbn)) {
+                if (!book.isAvailable()) {
+                    book.setAvailable(true);
+                    System.out.println("Success: Book '" + book.getTitle() + "' has been returned!");
+                } else {
+                    System.out.println("This book was not assigned. It is already in the library!");
+                }
+                return;
+            }
+        }
+        System.out.println("Book with ISBN " + isbn + " not found.");
+    }
+
 }
