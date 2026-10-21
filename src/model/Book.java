@@ -1,3 +1,5 @@
+package model;
+
 public class Book {
     private String isbn;
     private String title;
@@ -50,21 +52,12 @@ public class Book {
     }
 
     public void setAvailable(boolean available) {
-        isAvailable = available;
+        this.isAvailable = available;
     }
-
-    
 
     @Override
     public String toString() {
-        String status;
-        if (isAvailable) {
-            status = "Available";
-        } else {
-            status = "Assigned";
-        }
-
-        return "ISBN: " + isbn + " | Title: " + title + " | Author: " + author + " | Tag: " + tag + " | Status: "
-                + status;
+        String status = isAvailable ? "Available" : "Assigned";
+        return "ISBN: " + isbn + " | Title: " + title + " | Author: " + author + " | Tag: " + tag + " | Status: " + status;
     }
 }

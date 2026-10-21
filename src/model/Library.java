@@ -1,3 +1,5 @@
+package model;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,7 +12,6 @@ public class Library {
 
     public boolean addBook(Book book) {
         return books.add(book);
-       
     }
 
     public void deleteBook(String isbn) {
@@ -67,17 +68,14 @@ public class Library {
             if (book.getIsbn().equalsIgnoreCase(isbn)) {
                 if (book.isAvailable()) {
                     book.setAvailable(false);
-                    System.out.println("Success: Book ' " + book.getTitle() + "' has been assigned!");
-
+                    System.out.println("Success: Book '" + book.getTitle() + "' has been assigned!");
                 } else {
                     System.out.println("Sorry, book is already assigned!");
                 }
-
                 return;
             }
         }
-        System.out.println("Book with ISBN :" + isbn + "not found.");
-
+        System.out.println("Book with ISBN " + isbn + " not found.");
     }
 
     public void unassignBook(String isbn) {
@@ -94,5 +92,4 @@ public class Library {
         }
         System.out.println("Book with ISBN " + isbn + " not found.");
     }
-
 }
