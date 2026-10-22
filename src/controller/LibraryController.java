@@ -2,6 +2,7 @@ package controller;
 
 import model.Book;
 import model.Library;
+import model.Student;
 import view.LibraryView;
 
 public class LibraryController {
@@ -83,10 +84,23 @@ public class LibraryController {
 
     private void handleAssignBook() {
         String isbn = view.getUserInput("Enter ISBN of book to assign: ");
-        int status = library.assignBook(isbn);
+        String name = view.getUserInput("Enter Student Name: ");
 
-         if (status == 1) {
-        view.showMessage("Book assigned successfully!");
+        int rollNo;
+        try {
+            rollNo = Integer.parseInt(view.getUserInput("Enter Student Roll No: "));
+        } catch (Exception e) {
+            view.showMessage("invalid roll number!");
+            return ;
+        }
+
+        String date = view.getUserInput("Enter Issue Date (e.g. 10-10-2026): ");
+        
+        Student student = new Student(name,rollNo,date);
+
+        int status = library.assignBook(isbn, student);
+        if (status == 1) {
+        view.showMessage("Book assigned successfully to " + name);
     } else if (status == 2) {
         view.showMessage(" Book is already assigned to someone else!");
     } else {
