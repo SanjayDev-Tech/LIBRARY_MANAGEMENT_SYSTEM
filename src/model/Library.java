@@ -11,6 +11,11 @@ public class Library {
     }
 
     public boolean addBook(Book book) {
+        for (Book b : books) {
+            if (b.getIsbn().equalsIgnoreCase(book.getIsbn())) {
+                return false;
+            }
+        }
         return books.add(book);
     }
 
@@ -63,20 +68,20 @@ public class Library {
         }
     }
 
-    public int  assignBook(String isbn) {
+    public int assignBook(String isbn) {
         for (Book book : books) {
             if (book.getIsbn().equalsIgnoreCase(isbn)) {
                 if (book.isAvailable()) {
                     book.setAvailable(false);
                     return 1;
-                   
+
                 } else {
                     return 2;
                 }
-                
+
             }
         }
-       return 0;
+        return 0;
     }
 
     public void unassignBook(String isbn) {

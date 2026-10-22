@@ -56,7 +56,7 @@ public class LibraryController {
                     return;
 
                 default:
-                    view.showMessage("❌ Invalid choice! Select 1-7.");
+                    view.showMessage("Invalid choice! Select 1-7.");
                     break;
             }
         }
@@ -70,7 +70,9 @@ public class LibraryController {
 
         boolean success = library.addBook(new Book(isbn, title, author, tag));
         if (success) {
-            view.showMessage("✅ Book added successfully!");
+            view.showMessage(" Book added successfully!");
+        } else {
+            view.showMessage("\n Failed to add book: Duplicate ISBN is not allowed.");
         }
     }
 
@@ -118,7 +120,7 @@ public class LibraryController {
                 break;
 
             default:
-                view.showMessage("❌ Invalid search type!");
+                view.showMessage(" Invalid search type!");
                 break;
         }
     }
