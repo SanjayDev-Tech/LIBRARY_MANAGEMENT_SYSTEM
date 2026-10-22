@@ -10,7 +10,8 @@ public class LibraryView {
     }
 
   
-    public void displayMenu() {
+    public
+     void displayMenu() {
         System.out.println("\n--- LIBRARY SYSTEM MENU ---");
         System.out.println("1. Add Book | 2. Display All | 3. Search | 4. Delete | 5. Assign Book | 6. Return Book | 7. Exit");
         System.out.print("Choice: ");
